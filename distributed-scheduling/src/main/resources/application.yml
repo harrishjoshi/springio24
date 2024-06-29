@@ -7,6 +7,19 @@ spring:
     password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        #        generate_statistics: true
+        #format_sql: true
+        jdbc:
+          batch_size: 50
+        order_inserts: true
+        order_updates: true
+
   flyway:
     enabled: false
     user: ${spring.datasource.username}
