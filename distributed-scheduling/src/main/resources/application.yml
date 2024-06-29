@@ -6,3 +6,12 @@ spring:
     username: root
     password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+  flyway:
+    enabled: false
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    schemas: distributed_scheduling
+    url: ${spring.datasource.url}
+    locations: classpath:/db/migration
+    baselineOnMigrate: true
