@@ -1,6 +1,19 @@
 -- Drop tables if they exist
+DROP TABLE IF EXISTS card_seq;
 DROP TABLE IF EXISTS card;
+DROP TABLE IF EXISTS customer_seq;
 DROP TABLE IF EXISTS customer;
+
+-- Create Customer sequence table
+CREATE TABLE customer_seq
+(
+    `next_val` bigint DEFAULT NULL
+);
+
+-- Initialize the sequence with a starting value
+INSERT INTO customer_seq (next_val)
+VALUES (1) ON DUPLICATE KEY
+UPDATE next_val=next_val;
 
 -- Create Customer table
 CREATE TABLE customer
@@ -13,6 +26,17 @@ CREATE TABLE customer
     date_of_birth DATE         NOT NULL,
     address       VARCHAR(255) NOT NULL
 );
+
+-- Create Card sequence table
+CREATE TABLE card_seq
+(
+    `next_val` bigint DEFAULT NULL
+);
+
+-- Initialize the sequence with a starting value
+INSERT INTO card_seq (next_val)
+VALUES (1) ON DUPLICATE KEY
+UPDATE next_val=next_val;
 
 -- Create Card table
 CREATE TABLE card
